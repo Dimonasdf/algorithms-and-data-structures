@@ -35,6 +35,16 @@ public class Sorter : MonoBehaviour
         SortWith(new InsertionSort<int>());
     }
 
+    public void MergeSort()
+    {
+        SortWith(new MergeSort<int>());
+    }
+
+    public void QuickSort()
+    {
+        SortWith(new QuickSort<int>());
+    }
+
     private void SortWith(SortingAlgorithm<int> algorithm)
     {
         var dataCopy = new int[dataSet.Length];
