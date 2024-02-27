@@ -20,35 +20,17 @@ public class Sorter : MonoBehaviour
         Debug.Log($"{dataSet.ToSpacedString()} : Initial data set");
     }
 
-    public void BubbleSort()
-    {
-        SortWith(new BubbleSort<int>());
-    }
+    public void BubbleSort() => SortWith(new BubbleSort<int>());
 
-    public void SelectionSort()
-    {
-        SortWith(new SelectionSort<int>());
-    }
+    public void SelectionSort() => SortWith(new SelectionSort<int>());
 
-    public void InsertionSort()
-    {
-        SortWith(new InsertionSort<int>());
-    }
+    public void InsertionSort() => SortWith(new InsertionSort<int>());
 
-    public void MergeSort()
-    {
-        SortWith(new MergeSort<int>());
-    }
+    public void MergeSort() => SortWith(new MergeSort<int>());
 
-    public void QuickSort()
-    {
-        SortWith(new QuickSort<int>());
-    }
+    public void QuickSort() => SortWith(new QuickSort<int>());
 
-    public void HeapSort()
-    {
-        SortWith(new HeapSort<int>());
-    }
+    public void HeapSort() => SortWith(new HeapSort<int>());
 
     private void SortWith(SortingAlgorithm<int> algorithm)
     {

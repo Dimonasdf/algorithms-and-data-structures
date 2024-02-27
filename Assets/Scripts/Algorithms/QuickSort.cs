@@ -2,10 +2,7 @@ using System;
 
 public class QuickSort<TData> : SortingAlgorithm<TData> where TData : IComparable
 {
-    public override void Sort(TData[] data)
-    {
-        RecursiveQuickSort(data, 0, data.Length);
-    }
+    public override void Sort(TData[] data) => RecursiveQuickSort(data, 0, data.Length);
 
     private void RecursiveQuickSort(TData[] data, int from, int to)
     {
