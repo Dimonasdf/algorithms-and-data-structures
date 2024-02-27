@@ -45,6 +45,11 @@ public class Sorter : MonoBehaviour
         SortWith(new QuickSort<int>());
     }
 
+    public void HeapSort()
+    {
+        SortWith(new HeapSort<int>());
+    }
+
     private void SortWith(SortingAlgorithm<int> algorithm)
     {
         var dataCopy = new int[dataSet.Length];

@@ -33,5 +33,8 @@ public class SorterEditor : Editor
 
         if (GUILayout.Button(nameof(Sorter.QuickSort)))
             sorter.QuickSort();
+
+        if (GUILayout.Button(nameof(Sorter.HeapSort)))
+            sorter.HeapSort();
     }
 }
