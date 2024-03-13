@@ -1,6 +1,13 @@
 using System;
 using UnityEngine;
 
+/// <summary>
+/// Divides source data into halves recursively until they reach the size 2, sorts them,
+/// and then reconstructs the halves back, merge-sorting them along the way without search.
+/// </summary>
+// Takes log-n division operations with linear time to merge them, resulting in O(n * log-n) time complexity
+// The order of equal elements is maintained
+// Usually is implemented requiring extra space for the dividing collections
 public class MergeSort<TData> : SortingAlgorithm<TData> where TData : IComparable
 {
     public override void Sort(TData[] data)
@@ -15,7 +22,7 @@ public class MergeSort<TData> : SortingAlgorithm<TData> where TData : IComparabl
         Merge(data, split1, split2);
     }
 
-    // returns true if it makes sense to continue division - data length is >= 2
+    // returns true if it makes sense to continue division, i.e. data length is >= 2
     private bool Divide(TData[] data, out TData[] split1, out TData[] split2)
     {
         var dataLength = data.Length;
@@ -30,7 +37,7 @@ public class MergeSort<TData> : SortingAlgorithm<TData> where TData : IComparabl
         return dataLength > 1;
     }
 
-    // sum of lengths of splits is presumed to be equal to length of source, because that's how we've split them
+    // sum of lengths of splits is presumed to be equal to the length of source, because that's how we've split them
     // split1 and split2 are merged back into source in non-decreasing order
     private void Merge(TData[] source, TData[] split1, TData[] split2)
     {

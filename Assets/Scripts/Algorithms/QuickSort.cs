@@ -1,14 +1,21 @@
 using System;
 
+/// <summary>
+/// Recursively separates data into halves around the pivot value, moving all lesser values to the left
+/// and greater values to the right of the pivot, until the halves become short enough to be trivially sorted.
+/// </summary>
+// In case the selected pivot adequately divides data into halves - performes log-n division-sort operations, each containing a linear number of swaps.
+// In case pivot values turns out to be too close to the lesser or the greater side of the values range, it may be required up to n division-sort operations. 
+// There are methods of choosing a decent pivot value, resulting in an average (n * log-n) time performance of the algorithm.
+// Order of equal values is not maintained (unstable)
+// Is done in place
+
 public class QuickSort<TData> : SortingAlgorithm<TData> where TData : IComparable
 {
     public override void Sort(TData[] data) => RecursiveQuickSort(data, 0, data.Length);
 
     private void RecursiveQuickSort(TData[] data, int from, int to)
     {
-        // note1: range notation works as "[from, to)"
-        // note2: passing data[from..to] into the method would create a copy of that part of the array
-        // rather than reference members of the original array
         if (!MedianOfThree(data, from, to))
             return;
 
@@ -20,7 +27,7 @@ public class QuickSort<TData> : SortingAlgorithm<TData> where TData : IComparabl
         (data[pivotIndex], data[to - 1]) = (data[to - 1], data[pivotIndex]);
 
         var lesserIndexer = from;
-        // start greater indexer before last position, skipping unnecessary check agains pivot value
+        // start greater indexer before last position, skipping unnecessary check against pivot value
         var greaterIndexer = to - 2;
 
         for (; lesserIndexer < greaterIndexer; lesserIndexer++)

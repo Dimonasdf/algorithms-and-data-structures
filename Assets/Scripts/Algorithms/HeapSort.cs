@@ -1,6 +1,15 @@
 using System;
 using System.Runtime.CompilerServices;
 
+/// <summary>
+/// Sort entirely relying on the property of the Heap data structure and its self-organization.
+/// After heapifying the data, it pops the heap root, appends it to the sorted values and adjusts the heap.
+/// </summary>
+// Requires one Heap construction operation taking n * log-n time and then n heap extraction operations, each resulting in a log-n Heap adjustment,
+// resulting in 2 * n * log-n = O(n * log-n) time complexity.
+// Because of this greater constant factor it is considered to be a slower one among O(n * log-n) algorithms.
+// Is not a stable algorithm
+// Can be done in place or with extra n space
 public class HeapSort<TData> : SortingAlgorithm<TData> where TData : IComparable
 {
     public override void Sort(TData[] data) => SortInPlace(data);

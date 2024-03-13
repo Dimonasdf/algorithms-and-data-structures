@@ -3,20 +3,12 @@ using System.Collections.Generic;
 
 public static class Extensions
 {
-    public static string ToSpacedString<T>(this List<T> list)
+    public static string ToSpacedString<T>(this IEnumerable<T> enumerable)
     {
-        if (list == null)
+        if (enumerable == null)
             return "null";
         else
-            return string.Join(" ", list);
-    }
-
-    public static string ToSpacedString<T>(this T[] array)
-    {
-        if (array == null)
-            return "null";
-        else
-            return string.Join(" ", array);
+            return string.Join(' ', enumerable);
     }
 
     public static void Shuffle<T>(this T[] array, System.Random random = null)

@@ -1,5 +1,11 @@
 using System;
 
+/// <summary>
+/// Iterates along the elements of the array, swapping the bigger element towards the sorting direction.
+/// </summary>
+// Performs n sweeps, each on average n/2 long, resulting in n * n / 2 = O(n^2) time complexity
+// Does not change the order of equal elements (stable)
+// Is done in place
 public class BubbleSort<TData> : SortingAlgorithm<TData> where TData : IComparable
 {
     public override void Sort(TData[] data)
@@ -11,7 +17,7 @@ public class BubbleSort<TData> : SortingAlgorithm<TData> where TData : IComparab
         {
             var isSorted = true;
 
-            // iterate along the array, bubble the largest element to the end of array
+            // iterate along the array, bubble the largest element to the end
             // do not check further than the last fully bubbled element
             for (int j = 0; j < bubblingsLeft; j++)
             {
